@@ -1,10 +1,5 @@
-SELECT * 
-FROM Properties 
-WHERE property_id IN (
-    SELECT property_id 
-    FROM Reviews 
-    WHERE rating > 4
-);
+SELECT * FROM Properties WHERE property_id IN (     SELECT property_id     FROM Reviews GROUP
+BY property_id HAVING AVG(rating) > 4.0 );
 SELECT *
 FROM Users
 WHERE Users.user_id IN (
