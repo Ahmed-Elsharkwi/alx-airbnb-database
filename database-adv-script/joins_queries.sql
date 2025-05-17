@@ -1,3 +1,33 @@
-select * from Bookings join Users on Bookings.user_id = Users.user_id ;
-select * from Properties left join Reviews on Properties.property_id  = Reviews.property_id ;
-select * from Bookings left join Users on Bookings.user_id = Users.user_id  union select * from Bookings right join Users on Bookings.user_id = Users.user_id ;
+SELECT
+    Bookings.booking_id,
+    Bookings.user_id AS booking_user_id,
+    Users.user_id AS user_user_id,
+    Users.name AS user_name
+FROM Bookings
+JOIN Users ON Bookings.user_id = Users.user_id;
+
+SELECT
+    Properties.property_id,
+    Properties.name AS property_name,
+    Reviews.review_id,
+    Reviews.comment
+FROM Properties
+LEFT JOIN Reviews ON Properties.property_id = Reviews.property_id;
+
+SELECT
+    Bookings.booking_id,
+    Bookings.user_id AS booking_user_id,
+    Users.user_id AS user_user_id,
+    Users.name AS user_name
+FROM Bookings
+LEFT JOIN Users ON Bookings.user_id = Users.user_id
+
+UNION
+
+SELECT
+    Bookings.booking_id,
+    Bookings.user_id AS booking_user_id,
+    Users.user_id AS user_user_id,
+    Users.name AS user_name
+FROM Bookings
+RIGHT JOIN Users ON Bookings.user_id = Users.user_id;
