@@ -4,7 +4,7 @@ SELECT
     Users.user_id AS user_user_id,
     Users.name AS user_name
 FROM Bookings
-JOIN Users ON Bookings.user_id = Users.user_id;
+INNER JOIN Users ON Bookings.user_id = Users.user_id;
 
 SELECT
     Properties.property_id,
