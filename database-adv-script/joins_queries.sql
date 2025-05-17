@@ -13,6 +13,7 @@ SELECT
     Reviews.comment
 FROM Properties
 LEFT JOIN Reviews ON Properties.property_id = Reviews.property_id;
+ORDER BY Properties.name;
 
 SELECT
     Bookings.booking_id,
@@ -20,14 +21,4 @@ SELECT
     Users.user_id AS user_user_id,
     Users.name AS user_name
 FROM Bookings
-LEFT JOIN Users ON Bookings.user_id = Users.user_id
-
-UNION
-
-SELECT
-    Bookings.booking_id,
-    Bookings.user_id AS booking_user_id,
-    Users.user_id AS user_user_id,
-    Users.name AS user_name
-FROM Bookings
-RIGHT JOIN Users ON Bookings.user_id = Users.user_id;
+FULL OUTER JOIN Users ON Bookings.user_id = Users.user_id
